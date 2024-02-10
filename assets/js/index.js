@@ -7,6 +7,7 @@ do {
   drums[i].addEventListener("click", function () {
     var courentObject = this.innerHTML;
     goodKeyPlaySound(courentObject);
+    buttonAnimation(courentObject);
   });
   i++;
 } while (i < drums.length);
@@ -16,6 +17,8 @@ do {
 document.addEventListener("keydown", function (Event) {
   goodKeyPlaySound(Event.key);
 });
+
+
 function goodKeyPlaySound(evenementDeclencheur) { 
     switch (evenementDeclencheur) {
       case "w":
@@ -53,6 +56,14 @@ function goodKeyPlaySound(evenementDeclencheur) {
     }
   }
 
+function buttonAnimation(currentKey) {
+  var activeButton = document.querySelector("." + currentKey);
+  activeButton.classList.add("pressed"); 
+
+  setTimeout(() => {
+    activeButton.classList.remove("pressed");
+  }, 100);
+}
  
 
 console.timeEnd("Temps");
